@@ -17,6 +17,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import TemporaryDrawer from '../Drower/Drower';
 import '../../app/globals.css'
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -61,10 +62,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const PrimarySearchAppBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const session = useSession();
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+    // const handleSingInWithGoogle = () => {
+    //     signIn('google');
+    //     const user = session.data.user;
+    //     console.log(user);
+    // }
+
+    console.log(session);
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -149,7 +158,6 @@ const PrimarySearchAppBar = () => {
                     aria-haspopup="true"
                     color="inherit"
                 >
-                    <AccountCircle />
                 </IconButton>
                 <p>Profile</p>
             </MenuItem>
@@ -157,8 +165,8 @@ const PrimarySearchAppBar = () => {
     );
 
     return (
-        <Box  className='w-full' sx={{padding:0}} >
-            <AppBar  sx={{backgroundColor:'black' }}>
+        <Box className='w-full' sx={{ padding: 0 }} >
+            <AppBar sx={{ backgroundColor: 'black' }}>
                 <section className='container mx-auto p-0 flex gap-3 items-center '   >
                     <TemporaryDrawer></TemporaryDrawer>
                     <Typography
@@ -169,6 +177,7 @@ const PrimarySearchAppBar = () => {
                     >
                         MUI
                     </Typography>
+                    <button className='btn' onClick={() => signIn('google')}>login</button>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />

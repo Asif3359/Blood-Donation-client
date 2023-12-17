@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import PrimarySearchAppBar from '@/Components/AppBar/AppBar'
 import Footer from '@/Components/Footer/Footer'
+import AuthProvider from '@/Components/AuthProvider/AuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,7 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
 
       <body className={inter.className}>
-        <div><PrimarySearchAppBar></PrimarySearchAppBar></div>
+        <div>
+          <AuthProvider>
+            <PrimarySearchAppBar></PrimarySearchAppBar>
+          </AuthProvider>
+        </div>
         <div className=' container mx-auto min-h-screen mt-12'>
           {children}
         </div>
