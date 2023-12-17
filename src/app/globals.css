@@ -2,4 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.css-1fpo0vu-MuiToolbar-root{
+    padding: 0;
+}
+
 

@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
 
       <body className={inter.className}>
         <div><PrimarySearchAppBar></PrimarySearchAppBar></div>
-        <div className='min-h-screen'>
+        <div className=' container mx-auto min-h-screen mt-12'>
           {children}
         </div>
         <section>

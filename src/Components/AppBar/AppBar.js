@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import TemporaryDrawer from '../Drower/Drower';
+import '../../app/globals.css'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -57,7 +58,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const PrimarySearchAppBar = ()=> {
+const PrimarySearchAppBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -156,18 +157,9 @@ const PrimarySearchAppBar = ()=> {
     );
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
-                    {/* <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton> */}
+        <Box  className='w-full' sx={{padding:0}} >
+            <AppBar  sx={{backgroundColor:'black' }}>
+                <section className='container mx-auto p-0 flex gap-3 items-center '   >
                     <TemporaryDrawer></TemporaryDrawer>
                     <Typography
                         variant="h6"
@@ -226,7 +218,7 @@ const PrimarySearchAppBar = ()=> {
                             <MoreIcon />
                         </IconButton>
                     </Box>
-                </Toolbar>
+                </section>
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
