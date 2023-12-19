@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -6,6 +7,7 @@ const singUpPage = () => {
         <div className='flex justify-between items-center'>
             <div className='flex-1 hidden lg:flex justify-center items-center'>
                 {/* <img src={img1} alt="" className='w-3/4 rounded-3xl' /> */}
+                <Image src='https://github.com/Asif3359/online-Assignment/blob/main/src/assets/images/login/12085707_20944201.jpg?raw=true' width={500} height={500} alt='login image'></Image>
             </div>
             <div className='flex-1'>
                 <section className="">
