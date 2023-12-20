@@ -17,7 +17,7 @@ const SingUp = () => {
         e.preventDefault();
         // console.log(name, email,password,photo);
         try {
-            const res = await fetch('/src/app/api/singup', {
+            const res = await fetch('api/singup', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
