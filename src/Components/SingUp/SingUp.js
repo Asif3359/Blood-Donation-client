@@ -2,10 +2,48 @@
 import { signIn, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 const SingUp = () => {
     const session = useSession();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [photo, setPhoto] = useState('');
+    const [password, setPassWord] = useState('');
+
+    // 
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        // console.log(name, email,password,photo);
+        try {
+            const res = await fetch('api/singup', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                    photo
+                })
+            });
+
+            if(res.ok)
+            {
+                const from = e.target;
+                from.reset();
+            }
+            else{
+                console.log('user Registration Failed')
+            }
+
+        } catch (error) {
+            console.log("Something Error In server",error);
+        }
+    }
+
     return (
         <div>
             <div className='flex justify-between items-center'>
@@ -21,22 +59,22 @@ const SingUp = () => {
                                         Register
                                     </h1>
                                     {/* onSubmit={handleRegister} */}
-                                    <form className="space-y-2 md:space-y-3 mt-5 mb-3" action="#">
+                                    <form onSubmit={handleRegister} className="space-y-2 md:space-y-3 mt-5 mb-3" action="#">
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-medium ">Your name</label>
-                                            <input type="text" name="name" id="name" className=" border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="full name" required />
+                                            <input onChange={(e) => setName(e.target.value)} type="text" name="name" id="name" className=" border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="full name" required />
                                         </div>
                                         <div>
                                             <label htmlFor="photo" className="block mb-2 text-sm font-medium ">Your photo url</label>
-                                            <input type="text" name="photo" id="photo" className=" border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required />
+                                            <input onChange={(e) => setPhoto(e.target.value)} type="text" name="photo" id="photo" className=" border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required />
                                         </div>
                                         <div>
                                             <label htmlFor="email" className="block mb-2 text-sm font-medium ">Your email</label>
-                                            <input type="email" name="email" id="email" className=" border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required />
+                                            <input onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className=" border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required />
                                         </div>
                                         <div>
                                             <label htmlFor="password" className="block mb-2 text-sm font-medium ">Password</label>
-                                            <input type="password" name="password" id="password" placeholder="••••••••" className=" border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" required="please select this" />
+                                            <input onChange={(e) => setPassWord(e.target.value)} type="password" name="password" id="password" placeholder="••••••••" className=" border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" required="please select this" />
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-start">
