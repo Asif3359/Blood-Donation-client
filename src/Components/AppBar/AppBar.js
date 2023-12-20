@@ -62,7 +62,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const PrimarySearchAppBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-    const session = useSession();
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -73,7 +72,6 @@ const PrimarySearchAppBar = () => {
     //     console.log(user);
     // }
 
-    console.log(session);
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -177,7 +175,6 @@ const PrimarySearchAppBar = () => {
                     >
                         MUI
                     </Typography>
-                    <button className='btn' onClick={() => signIn('google')}>login</button>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />

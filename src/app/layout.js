@@ -17,9 +17,7 @@ export default function RootLayout({ children }) {
 
       <body className={inter.className}>
         <div>
-          <AuthProvider>
             <PrimarySearchAppBar></PrimarySearchAppBar>
-          </AuthProvider>
         </div>
         <div className=' container mx-auto min-h-screen mt-12'>
           {children}
