@@ -5,9 +5,9 @@ import React from 'react';
 const Footer = () => {
     return (
         <section className='bg-black text-white '>
-            <footer className="footer footer-center p-10 container mx-auto  text-base-content rounded">
+            <footer className="footer footer-center p-10 container mx-auto rounded text-white">
                 <nav className="grid grid-flow-col gap-4">
-                    <a className="link link-hover">About us</a>
+                    <Link href='/'>Home</Link>
                     <a className="link link-hover">Contact</a>
                     <a className="link link-hover">Jobs</a>
                     <a className="link link-hover">Press kit</a>
