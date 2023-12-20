@@ -17,7 +17,7 @@ const SingUp = () => {
         e.preventDefault();
         // console.log(name, email,password,photo);
         try {
-            const res = await fetch('api/singup', {
+            const res = await fetch('/src/app/api/singup', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -30,17 +30,16 @@ const SingUp = () => {
                 })
             });
 
-            if(res.ok)
-            {
+            if (res.ok) {
                 const from = e.target;
                 from.reset();
             }
-            else{
+            else {
                 console.log('user Registration Failed')
             }
 
         } catch (error) {
-            console.log("Something Error In server",error);
+            console.log("Something Error In server", error);
         }
     }
 

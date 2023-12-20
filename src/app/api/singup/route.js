@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import React from 'react';
 
-const POST = async (req) => {
+export const POST = async (req) => {
     try {
         const { name, email, password, photo } = await req.json();
         console.log("Name :", name)
