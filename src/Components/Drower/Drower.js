@@ -12,6 +12,29 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
+import Link from 'next/link';
+import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+
+const list1 = [
+    {
+        id: 1,
+        link: "/",
+        name: "Home",
+        Icon: MenuIcon
+    },
+    {
+        id: 2,
+        link: "/login",
+        name: "Login"
+    },
+    {
+        id: 3,
+        link: "/singup",
+        name: 'singup'
+    }
+]
 
 export default function TemporaryDrawer() {
     const [state, setState] = React.useState({
@@ -37,13 +60,21 @@ export default function TemporaryDrawer() {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
+                {list1.map((item, index) => (
+                    <ListItem key={item.id} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {
+                                    index === 0 ? <HomeIcon /> : <></>
+                                }
+                                {
+                                    index === 1 ? <LoginIcon /> : <></>
+                                }
+                                {
+                                    index === 2 ? <LogoutIcon /> : <></>
+                                }
                             </ListItemIcon>
-                            <ListItemText primary={text} />
+                            <Link href={item.link}> {item.name} </Link>
                         </ListItemButton>
                     </ListItem>
                 ))}
